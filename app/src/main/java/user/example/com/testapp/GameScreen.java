@@ -16,6 +16,7 @@ import user.example.com.testapp.Models.Player;
  * Created by User on 12/24/2016.
  */
 public class GameScreen extends Screen {
+    private World world;
     public GameScreen(Context context, Game game) {
         super(context, game);
         setIntent(new IntentShowHide(game));
@@ -24,12 +25,13 @@ public class GameScreen extends Screen {
     @Override
     public void loaded() {
         getIntent().create(this, null, 255, 10).start(false);
+        world = new World(game);
 
         initializeComponents();
     }
 
     private void initializeComponents() {
-        addComponent(new Player(game));
+        addComponent(new Player(game, world));
 
         addComponent(ButtonCircle.create(game, "НАЗАД", 100, 100, 30, Color.argb(255, 100, 100, 100), Color.WHITE, 25)
                 .addListenerClick(new EventClick() {
@@ -43,7 +45,11 @@ public class GameScreen extends Screen {
 
     @Override
     public void render(float delta) {
-        game.graphics.fillRect(game.getWidth()/2, game.getHeight()/2, game.getWidth(), game.getHeight(), Color.argb(255, 50, 50, 50));
+        game.graphics.fillRect(game.getWidth() / 2, game.getHeight() / 2, game.getWidth(), game.getHeight(), Color.argb(255, 50, 50, 50));
+
+        world.render(delta);
+
+        game.graphics.drawText(String.valueOf(world.getBalls()), game.getWidth() - 100, 70, 40, Color.WHITE);
     }
 
     @Override

@@ -11,12 +11,21 @@ public abstract class Model extends BaseView {
     private float radius;
     private float velocityX;
     private float velocityY;
+    private String userData;
     public int color;
 
     public Model(Game game) {
         super(game);
         setRadius(50);
         setColor(Color.CYAN);
+    }
+
+    public String getUserData() {
+        return userData;
+    }
+
+    public void setUserData(String userData) {
+        this.userData = userData;
     }
 
     public boolean intersect(Model model) {

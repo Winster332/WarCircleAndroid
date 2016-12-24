@@ -2,6 +2,7 @@ package user.example.com.testapp.Models;
 
 import android.graphics.Color;
 import user.example.com.testapp.Core.Game;
+import user.example.com.testapp.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,11 @@ public class Player extends Model {
     private Circle circleBig;
     private float timeLoad = 50;
     private float currentTimeLoad;
+    private World world;
 
-    public Player(Game game) {
+    public Player(Game game, World world) {
         super(game);
+        this.world = world;
 
         bullets = new ArrayList<Circle>();
 
@@ -75,15 +78,7 @@ public class Player extends Model {
 
     public void attack(float vx, float vy) {
         if (getCurrentTimeLoad() <= 0) {
-            Circle circle = new Circle(game);
-            circle.setX(circleSmall.getX());
-            circle.setY(circleSmall.getY());
-            circle.setRadius(circleSmall.getRadius());
-            circle.setVelocityX(-vx*250);
-            circle.setVelocityY(-vy*250);
-
-            bullets.add(circle);
-
+            world.addBullet(circleSmall.getX(), circleSmall.getY(), -vx*250, -vy*250);
             setCurrentTimeLoad(getTimeLoad());
         }
     }
