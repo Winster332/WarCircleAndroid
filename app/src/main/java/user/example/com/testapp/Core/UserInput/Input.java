@@ -11,9 +11,19 @@ import user.example.com.testapp.Core.Game;
 public class Input implements View.OnTouchListener {
     private Game game;
     private TouchPool touchPool;
+    private boolean isLock;
+
     public Input(Game game) {
         this.game = game;
         touchPool = new TouchPool();
+    }
+
+    public boolean isLock() {
+        return isLock;
+    }
+
+    public void setLock(boolean lock) {
+        isLock = lock;
     }
 
     public boolean IsTouch() {
@@ -41,11 +51,15 @@ public class Input implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        touchPool.add(event.getX(), event.getY(), event.getAction());
+        if (!isLock()) {
+            touchPool.add(event.getX(), event.getY(), event.getAction());
+        }
         return true;
     }
 
     public void update() {
         touchPool.getTouches().clear();
     }
+
+
 }

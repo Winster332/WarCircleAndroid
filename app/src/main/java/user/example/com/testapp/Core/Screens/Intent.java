@@ -32,6 +32,9 @@ public abstract class Intent {
     }
 
     public void start(boolean isIntent) {
+        if (isIntent)
+            game.input.setLock(true);
+
         setStep(true);
         setEnableIntent(isIntent);
     }
