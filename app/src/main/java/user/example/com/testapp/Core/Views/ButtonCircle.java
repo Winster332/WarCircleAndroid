@@ -49,7 +49,7 @@ public class ButtonCircle extends Button {
     public void render() {
         game.graphics.fillCircle(getX()+getRadiusDown(), getY()+getRadiusDown(), getRadius()+getRadiusDown(), getColor());
         getText().setX(getX()-getRadius());
-        getText().setY(getY()-getRadius());
+        getText().setY(getY()-getRadius()/1.5f);
         getText().render();
     }
 

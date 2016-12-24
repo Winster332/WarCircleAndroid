@@ -43,9 +43,10 @@ public class Game {
     }
 
     public void setScreen(Screen newScreen) {
-        newScreen.setOnTouchListener(input);
         if (this.screen != null)
             this.screen.dispose();
+
+        newScreen.setOnTouchListener(input);
         this.screen = newScreen;
         getActivity().setContentView(getScreen());
         getScreen().loaded();
