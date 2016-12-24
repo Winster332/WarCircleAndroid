@@ -8,7 +8,7 @@ import user.example.com.testapp.Core.Game;
 public abstract class Intent {
     private Screen screenFrom;
     private Screen screenTo;
-    private Game game;
+    protected Game game;
     private float currentValue;
     private float velocity;
     private boolean isStep;

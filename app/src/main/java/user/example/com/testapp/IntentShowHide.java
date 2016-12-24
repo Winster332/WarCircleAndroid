@@ -13,11 +13,9 @@ public class IntentShowHide extends Intent {
 
     @Override
     public void step() {
-
     }
 
     @Override
     public void render() {
-
     }
 }

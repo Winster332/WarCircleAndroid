@@ -10,9 +10,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Game game = new Game();
-        Screen screen = new MainScreen(this, game);
-        screen.setOnTouchListener(game.input);
-        setContentView(screen);
+        Game game = new Game(this);
+        game.setScreen(new MainScreen(this, game));
+        setContentView(game.getScreen());
     }
 }
