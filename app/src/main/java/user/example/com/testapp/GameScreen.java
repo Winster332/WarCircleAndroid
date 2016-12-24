@@ -9,6 +9,7 @@ import user.example.com.testapp.Core.Screens.Screen;
 import user.example.com.testapp.Core.Views.BaseView;
 import user.example.com.testapp.Core.Views.ButtonCircle;
 import user.example.com.testapp.Core.Views.EventClick;
+import user.example.com.testapp.Models.Circle;
 
 /**
  * Created by User on 12/24/2016.
@@ -35,6 +36,7 @@ public class GameScreen extends Screen {
                             getIntent().create(null, new MainScreen(context, game), 0, 15).start(true);
                     }
                 }));
+        addComponent(new Circle(game));
     }
 
     @Override
