@@ -10,11 +10,13 @@ import user.example.com.testapp.Core.Game;
  */
 public class ButtonCircle extends Button {
     private float radius;
+    private float radiusDown;
 
     public ButtonCircle(Game game) {
         super(game);
         setRadius(50);
         getText().setValue("Button circle");
+        setRadiusDown(0);
     }
 
     @Override
@@ -25,15 +27,27 @@ public class ButtonCircle extends Button {
             float distance = (float) Math.sqrt(Math.pow(getX() - radius - game.input.getX(), 2) +
                     Math.pow(getY() - radius - game.input.getY(), 2));
 
-            if (distance <= getRadius()*2) {
+            if (distance <= getRadius() * 2) {
+                if (game.input.getAction() == MotionEvent.ACTION_DOWN) {
+                    setRadiusDown(getRadius()/3);
+                }
+
                 useAllClick(game.input.getAction());
             }
         }
     }
 
+    public float getRadiusDown() {
+        return radiusDown;
+    }
+
+    public void setRadiusDown(float radiusDown) {
+        this.radiusDown = radiusDown;
+    }
+
     @Override
     public void render() {
-        game.graphics.fillCircle(getX(), getY(), getRadius(), getColor());
+        game.graphics.fillCircle(getX()+getRadiusDown(), getY()+getRadiusDown(), getRadius()+getRadiusDown(), getColor());
         getText().setX(getX()-getRadius());
         getText().setY(getY()-getRadius());
         getText().render();

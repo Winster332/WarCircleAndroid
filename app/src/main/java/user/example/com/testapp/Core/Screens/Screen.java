@@ -19,9 +19,11 @@ public abstract class Screen extends View {
     private Intent intent;
     protected Game game;
     private long prevTime;
+    protected Context context;
 
     public Screen(Context context, Game game) {
         super(context);
+        this.context = context;
         this.game = game;
         this.views = new ArrayList<BaseView>();
         prevTime = System.nanoTime();
@@ -56,6 +58,8 @@ public abstract class Screen extends View {
         return view;
     }
 
+    public abstract void loaded();
+
     public void removeComponent(BaseView view) {
         views.remove(view);
     }
@@ -83,4 +87,8 @@ public abstract class Screen extends View {
     }
 
     public abstract void render(float delta);
+
+    public void dispose() {
+        views.clear();
+    }
 }
