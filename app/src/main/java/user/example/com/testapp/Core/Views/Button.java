@@ -21,8 +21,9 @@ public abstract class Button extends BaseView {
         clicks = new ArrayList<EventClick>();
     }
 
-    public void addListenerClick(EventClick eventClick) {
+    public Button addListenerClick(EventClick eventClick) {
         clicks.add(eventClick);
+        return this;
     }
 
     public void removeListenerClick(EventClick eventClick) {
@@ -33,9 +34,9 @@ public abstract class Button extends BaseView {
         clicks.remove(index);
     }
 
-    protected void useAllClick() {
+    protected void useAllClick(int action) {
         for (int i = 0; i < clicks.size(); i++) {
-            clicks.get(i).Click(this);
+            clicks.get(i).Click(this, action);
         }
     }
 

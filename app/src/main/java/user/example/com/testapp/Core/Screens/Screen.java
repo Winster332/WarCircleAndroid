@@ -40,7 +40,7 @@ public abstract class Screen extends View {
             intent.step();
             intent.render();
         }
-
+        game.input.update();
         this.invalidate();
     }
 

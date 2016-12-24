@@ -22,10 +22,8 @@ public class ButtonRectangle extends Button {
         getText().step(dt);
 
         if (game.input.IsTouch()) {
-            if (game.input.getAction() == MotionEvent.ACTION_UP) {
-                if (isIntersect()) {
-                    useAllClick();
-                }
+            if (isIntersect()) {
+                useAllClick(game.input.getAction());
             }
         }
     }
@@ -59,5 +57,21 @@ public class ButtonRectangle extends Button {
 
     public void setWidth(float width) {
         this.width = width;
+    }
+
+    public static ButtonRectangle create(Game game, String text, float x, float y, float width, float height, int backColor, int frontColor, float sizeText) {
+        ButtonRectangle element = new ButtonRectangle(game);
+        element.setX(x);
+        element.setY(y);
+        element.getText().setValue(text);
+        element.setWidth(width);
+        element.setHeight(height);
+        element.setColor(backColor);
+        element.getText().setColor(frontColor);
+        element.getText().setSize(sizeText);
+        element.getText().setX(x);
+        element.getText().setY(y);
+
+        return element;
     }
 }
