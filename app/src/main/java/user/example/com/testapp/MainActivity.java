@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Game game = new Game(this);
         game.setScreen(new MainScreen(this, game));
+        game.hideActionBar();
         setContentView(game.getScreen());
     }
 }

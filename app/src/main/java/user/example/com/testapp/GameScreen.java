@@ -1,6 +1,7 @@
 package user.example.com.testapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import user.example.com.testapp.Core.Game;
 import user.example.com.testapp.Core.Screens.Screen;
@@ -21,7 +22,7 @@ public class GameScreen extends Screen {
 
     @Override
     public void render(float delta) {
-
+        game.graphics.fillRect(game.getWidth()/2, game.getHeight()/2, game.getWidth(), game.getHeight(), Color.argb(255, 50, 50, 50));
     }
 
     @Override

@@ -35,7 +35,7 @@ public class MainScreen extends Screen {
     }
 
     private void initializeComponents() {
-        addComponent(ButtonCircle.create(game, "ИГРАТЬ", 200, 200, 50, Color.BLACK, Color.WHITE, 20)
+        addComponent(ButtonCircle.create(game, "ИГРАТЬ", game.getWidth()/2+80, game.getHeight()/2+60, 80, Color.argb(255, 100, 100, 100), Color.WHITE, 70)
                 .addListenerClick(new EventClick() {
                     @Override
                     public void Click(BaseView view, int action) {
@@ -47,12 +47,12 @@ public class MainScreen extends Screen {
 
     @Override
     public void render(float delta) {
-        game.graphics.drawText("particles: " + systemLines.getParticles().size(), 100, 40, 32, Color.BLUE);
+        game.graphics.fillRect(game.getWidth()/2, game.getHeight()/2, game.getWidth(), game.getHeight(), Color.argb(255, 50, 50, 50));
+        game.graphics.drawText(String.valueOf(systemLines.getParticles().size()), game.getWidth()/2, 150, 60, Color.WHITE);
 
         if (game.input.IsTouch()) {
             systemLines.add(game.input.getX(), game.input.getY(), Color.argb(255, 0, 0, 0));
         }
-     //   Log.d("screen", "menu");
 
         systemLines.render(delta);
     }

@@ -3,6 +3,7 @@ package user.example.com.testapp.Core;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 import user.example.com.testapp.Core.Drawing.CanvasGraphics;
 import user.example.com.testapp.Core.Drawing.Graphics;
 import user.example.com.testapp.Core.Screens.Screen;
@@ -23,13 +24,22 @@ public class Game {
     public Game(AppCompatActivity appCompatActivity) {
         this.activity = appCompatActivity;
 
+        initializeSizeScreen();
+
+        graphics = new CanvasGraphics();
+        input = new Input(this);
+    }
+
+    private void initializeSizeScreen() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         width = displayMetrics.widthPixels;
         height = displayMetrics.heightPixels;
+    }
 
-        graphics = new CanvasGraphics();
-        input = new Input(this);
+    public void hideActionBar() {
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     public void setScreen(Screen newScreen) {
