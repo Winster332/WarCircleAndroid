@@ -10,6 +10,7 @@ import user.example.com.testapp.Core.Views.BaseView;
 import user.example.com.testapp.Core.Views.ButtonCircle;
 import user.example.com.testapp.Core.Views.EventClick;
 import user.example.com.testapp.Models.Circle;
+import user.example.com.testapp.Models.Player;
 
 /**
  * Created by User on 12/24/2016.
@@ -28,6 +29,8 @@ public class GameScreen extends Screen {
     }
 
     private void initializeComponents() {
+        addComponent(new Player(game));
+
         addComponent(ButtonCircle.create(game, "НАЗАД", 100, 100, 30, Color.argb(255, 100, 100, 100), Color.WHITE, 25)
                 .addListenerClick(new EventClick() {
                     @Override
@@ -36,7 +39,6 @@ public class GameScreen extends Screen {
                             getIntent().create(null, new MainScreen(context, game), 0, 15).start(true);
                     }
                 }));
-        addComponent(new Circle(game));
     }
 
     @Override

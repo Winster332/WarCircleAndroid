@@ -30,8 +30,8 @@ public abstract class Model extends BaseView {
 
     @Override
     public void step(float dt) {
-        setX(getX() + getVelocityX());
-        setY(getY() + getVelocityY());
+        setX(getX() + getVelocityX() * dt);
+        setY(getY() + getVelocityY() * dt);
     }
 
     public int getColor() {
