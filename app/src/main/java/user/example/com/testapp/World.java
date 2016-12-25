@@ -63,6 +63,10 @@ public class World {
             circleList.get(i).render();
 
             if (circleList.get(i).getUserData().equals("foe")) {
+                ((GameScreen)game.getScreen()).getSystemFire().add(circleList.get(i).getX(),
+                        circleList.get(i).getY(),
+                        Color.argb(255, 150, 150, 150), circleList.get(i).getRadius());
+
                 if (circleList.get(i).getX() - circleList.get(i).getRadius() < circleList.get(i).getRadius() * 2)
                     circleList.get(i).setVelocityX(circleList.get(i).getVelocityX() * -1);
                 if (circleList.get(i).getX() > game.getWidth() - circleList.get(i).getRadius()) {

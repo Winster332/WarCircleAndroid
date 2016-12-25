@@ -32,21 +32,17 @@ public class SystemLines extends Particles {
             CircleParticle p = new CircleParticle(game);
             p.setDead(false);
             p.setAlpha(255);
-            p.setVelocityX(generate(random.nextFloat() * 10 * -1, random.nextFloat() * 3));
-            p.setVelocityY(generate(random.nextFloat() * 10 * -1, random.nextFloat() * 3));
+            p.setVelocityX(generateRandomV2(random.nextFloat() * 10 * -1, random.nextFloat() * 3));
+            p.setVelocityY(generateRandomV2(random.nextFloat() * 10 * -1, random.nextFloat() * 3));
             p.setColor(color);
-            p.setX(generate(110.8f * random.nextFloat(), random.nextFloat()) + x);
-            p.setY(generate(110.8f * random.nextFloat(), random.nextFloat()) + y);
+            p.setX(generateRandomV2(110.8f * random.nextFloat(), random.nextFloat()) + x);
+            p.setY(generateRandomV2(110.8f * random.nextFloat(), random.nextFloat()) + y);
             p.setRadius(3);
             p.setVelocityAlpha(3);
             p.setVelocityRadius(0.05f);
 
             add(p, 1);
         }
-    }
-
-    private float generate(float length, float x) {
-        return  (float)Math.cos(x) * length;
     }
 
     public void render(float delta) {

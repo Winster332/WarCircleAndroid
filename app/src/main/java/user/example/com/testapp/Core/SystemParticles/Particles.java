@@ -41,4 +41,8 @@ public class Particles {
     public void setParticles(List<Particle> particles) {
         this.particles = particles;
     }
+
+    public float generateRandomV2(float length, float x) {
+        return  (float)Math.cos(x) * length;
+    }
 }
