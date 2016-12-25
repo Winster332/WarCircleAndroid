@@ -18,8 +18,8 @@ public class SystemFire extends Particles {
         CircleParticle p = new CircleParticle(game);
         p.setDead(false);
         p.setAlpha(255);
-        p.setVelocityX(generateRandomV2(random.nextFloat() * 10 * -1, random.nextFloat() * 3));
-        p.setVelocityY(generateRandomV2(random.nextFloat() * 10 * -1, random.nextFloat() * 3));
+        p.setVelocityX(generateRandomV2(random.nextFloat() * 50 * -1, random.nextFloat() * 3));
+        p.setVelocityY(generateRandomV2(random.nextFloat() * 50 * -1, random.nextFloat() * 3));
         p.setColor(color);
         p.setX(x);
         p.setY(y);

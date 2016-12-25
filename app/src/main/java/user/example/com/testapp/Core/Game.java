@@ -20,7 +20,6 @@ public class Game {
     private float height;
     private Screen screen;
 
-
     public Game(AppCompatActivity appCompatActivity) {
         this.activity = appCompatActivity;
 
