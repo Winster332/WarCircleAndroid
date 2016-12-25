@@ -74,6 +74,12 @@ public class World {
                 }
             }
 
+            if (circleList.get(i).getUserData().equals("bullet")) {
+                ((GameScreen)game.getScreen()).getSystemFire().add(circleList.get(i).getX(),
+                        circleList.get(i).getY(),
+                        Color.argb(255, 150, 150, 200), circleList.get(i).getRadius());
+            }
+
             if (circleList.get(i).getY() > game.getHeight()) {
                 endGame();
             }
