@@ -25,7 +25,7 @@ public class Player extends Model {
         bullets = new ArrayList<Circle>();
 
         setCurrentTimeLoad(0);
-        setTimeLoad(2);
+        setTimeLoad(1.5f);
         setColor(Color.argb(255, 150, 150, 150));
 
         setX(game.getWidth() / 2);
@@ -78,7 +78,7 @@ public class Player extends Model {
 
     public void attack(float vx, float vy) {
         if (getCurrentTimeLoad() <= 0) {
-            world.addBullet(circleSmall.getX(), circleSmall.getY(), -vx*250, -vy*250);
+            world.addBullet(circleSmall.getX(), circleSmall.getY(), -vx*250, -vy*250, circleSmall.getRadius());
             setCurrentTimeLoad(getTimeLoad());
         }
     }
@@ -94,16 +94,6 @@ public class Player extends Model {
 
         circleBig.setX(getX()+getRadius());
         circleBig.setY(getY());
-
-        for (int i = 0; i < bullets.size(); i++) {
-            bullets.get(i).step(dt);
-            bullets.get(i).render();
-
-            if (bullets.get(i).getX() < -100 || bullets.get(i).getX() > game.getWidth() + 100 ||
-                bullets.get(i).getY() < -100 || bullets.get(i).getY() > game.getHeight() + 100) {
-                bullets.remove(i);
-            }
-        }
     }
 
     @Override

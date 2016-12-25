@@ -31,7 +31,7 @@ public abstract class Model extends BaseView {
     public boolean intersect(Model model) {
         float distance = (float) Math.sqrt(Math.pow(getX() - model.getX(), 2) +
                 Math.pow(getY() - model.getY(), 2));
-        if (distance <= getRadius() + model.getRadius()) {
+        if (distance <= getRadius()*2 + model.getRadius()*2) {
             return true;
         }
         return false;
